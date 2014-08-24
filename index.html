@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Forest Cover Type App</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Forest Cover Type App">
+  <meta name="author" content="J. Sieber">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Forest Cover Type App</h1>
+    <h2>Data Competition from Kaggle</h2>
+    <p>J. Sieber<br/>Coursera's Developing Data Products</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Forest Cover Type Problem</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The US Forest Service and the US Geological Survey created data from 4 wildlife areas in Colorado. The four wilderness areas are: Rawah Wilderness Area, Neota Wilderness Area, Comanche Peak Wilderness Area, and Cache la Poudre Wilderness. Area</p>
+
+<p>They created several features to try to predict which forest cover type existed in each location.  Those cover types are:</p>
+
+<ul>
+<li>Spruce/Fir</li>
+<li>Lodgepole Pine</li>
+<li>Ponderosa Pine</li>
+<li>Cottonwood/Willow</li>
+<li>Aspen</li>
+<li>Douglas-fir</li>
+<li>Krummholz</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Kaggle</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Kaggle offers competitive data science competitions for all kinds of problems.  They have a wide range of problems everything from truly cutting edge stuff to problems that have been solved for a while.<br>
+For this problem they posted a training set of 15118 samples and 54 different features. Plus one more column for the id number and one more column for the output.</p>
+
+<pre><code class="r">Data &lt;- read.csv(&quot;./data/Data.csv&quot;)
+
+dim(Data)
+</code></pre>
+
+<pre><code>## [1] 15120    56
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Exploratory Data Analysis</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>This app contains a tab to explore the data.  You can try out different features and see how they interact with the different forest cover types.  One example of that is the box plot below.  This can be used to quickly look through large amounts of data and see if there are any trends.</p>
+
+<pre><code class="r">par(pin=c(4,2))
+boxplot(Elevation ~Cover_Type, data = Data,col=&quot;orange&quot;,xlab=&quot;Cover Type&quot;,ylab=&quot;Measured&quot;)
+</code></pre>
+
+<p><img src="assets/fig/unnamed-chunk-3.png" alt="plot of chunk unnamed-chunk-3"> </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Prediction</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>For this app a gradient boosted tree method was used.  On out of sample data it has a 75.4% accuracy.  There are several sliders and drop down menus to select amd adjust the different features.  It will make a prediction based on that model.</p>
+
+<p>Thank you and I hope you enjoy the app!</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Forest Cover Type Problem'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Kaggle'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Exploratory Data Analysis'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Prediction'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
